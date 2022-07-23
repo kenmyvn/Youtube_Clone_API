@@ -1,0 +1,19 @@
+.input-group {
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  justify-content: center;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+.form-control.rounded {
+  width: 200px;
+  position: relative;
+}
+
+.btn.btn-outline-primary {
+  color: #be4f62;
+  --bs-btn-border-color: #be4f62;
+  --bs-btn-hover-bg: #be4f62;
+}
