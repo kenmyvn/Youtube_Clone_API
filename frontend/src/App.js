@@ -24,8 +24,8 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
               <SearchBar />
+              <HomePage />
             </PrivateRoute>
           }
         />
