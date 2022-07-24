@@ -3,15 +3,15 @@ import "./SearchBar.css";
 
 const SearchBar = (props) => {
   return (
-    <div class="input-group">
+    <div className="input-group">
       <input
         type="search"
-        class="form-control rounded"
+        className="form-control rounded"
         placeholder="Search for Videos!"
         aria-label="Search"
         aria-describedby="search-addon"
       />
-      <button type="button" class="btn btn-outline-primary">
+      <button type="button" className="btn btn-outline-primary">
         Search
       </button>
     </div>
