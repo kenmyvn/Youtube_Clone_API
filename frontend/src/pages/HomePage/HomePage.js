@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {KEY} from "../../localKey";
 import axios from "axios";
 import { DATA } from "../../localData";
+import "./HomePage.css";
 
 const HomePage = () => {
   const [videos, setVideos] = useState(DATA.items);
@@ -20,13 +21,13 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="videoscontainer">
       {videos &&
         videos.map((video) => {
-          return <li key={video.snippet.title}>
-            {video.snippet.title}
-            <img src={video.snippet.thumbnails.default.url} />
-          </li>;
+          return <div className="vid" key={video.snippet.title}>
+            <p>{video.snippet.title}</p>
+            <img src={video.snippet.thumbnails.medium.url} />
+          </div>;
         })}
     </div>
   );

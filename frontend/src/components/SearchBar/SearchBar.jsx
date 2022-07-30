@@ -1,5 +1,7 @@
 import React from "react";
 import "./SearchBar.css";
+import { Link } from "react-router-dom";
+import SearchResultsPage from "../../pages/SearchResultsPage/SearchResultsPage";
 
 const SearchBar = (props) => {
   return (
@@ -11,9 +13,11 @@ const SearchBar = (props) => {
         aria-label="Search"
         aria-describedby="search-addon"
       />
-      <button type="button" className="btn btn-outline-primary">
-        Search
-      </button>
+      <Link to="/search">
+        <button type="button" className="btn btn-outline-primary">
+          Search
+        </button>
+      </Link>
     </div>
   );
 };
