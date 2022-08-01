@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import SearchResultsPage from "./pages/SearchResultsPage/SearchResultsPage";
+import VideoPage from "./pages/VideoPage/VideoPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -27,7 +28,8 @@ function App() {
           element={
             <PrivateRoute>
               <SearchBar />
-              <HomePage />
+              <VideoPage />
+              {/* <HomePage /> */}
             </PrivateRoute>
           }
         />
