@@ -7,7 +7,7 @@ import { DATAONE } from "../../localDataVideoOne";
 
 const VideoPage = () => {
   const [videos, setVideos] = useState(DATAONE.items);
-  const { handle } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     // fetchVideos();
@@ -32,7 +32,7 @@ const VideoPage = () => {
           type="text/html"
           width="640"
           height="360"
-          src={`https://www.youtube.com/embed/${handle}`}
+          src={`https://www.youtube.com/embed/${id}`}
           frameborder="0"
         ></iframe>
       </div>
