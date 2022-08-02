@@ -3,6 +3,7 @@ import {KEY} from "../../localKey";
 import axios from "axios";
 import { DATA } from "../../localData";
 import "./HomePage.css";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [videos, setVideos] = useState(DATA.items);
@@ -26,7 +27,7 @@ const HomePage = () => {
         videos.map((video) => {
           return <div className="vid" key={video.snippet.title}>
             <p>{video.snippet.title}</p>
-            <img src={video.snippet.thumbnails.medium.url} />
+            <Link to={`/video/${video.id.videoId}`}><img src={video.snippet.thumbnails.medium.url} /></Link>
           </div>;
         })}
     </div>
