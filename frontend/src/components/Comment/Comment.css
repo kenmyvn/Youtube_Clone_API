@@ -1,0 +1,9 @@
+.comment {
+  margin: 2em;
+  border-bottom: 1px solid grey;
+  border-width: 2px;
+}
+
+.name {
+  font-weight: bold;
+}
