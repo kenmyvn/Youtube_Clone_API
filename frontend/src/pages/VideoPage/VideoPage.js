@@ -4,10 +4,20 @@ import { KEY } from "../../localKey";
 import axios from "axios";
 import "./VideoPage.css";
 import { DATAONE } from "../../localDataVideoOne";
+import DisplayComments from "../../components/DisplayComment/DisplayComment";
+import CreateComment from "../../components/CreateComment/CreateComment";
 
 const VideoPage = () => {
   const [videos, setVideos] = useState(DATAONE.items);
   const { id } = useParams();
+
+  const [comments, setComments] = useState([]);
+
+  function addNewComment(comment) {
+    let tempComments = [...comments, comment];
+
+    setComments(tempComments);
+  }
 
   useEffect(() => {
     // fetchVideos();
@@ -48,6 +58,14 @@ const VideoPage = () => {
               );
             }
           })}
+      </div>
+      <div className="background-color">
+        <div className="border-box">
+          <CreateComment addNewCommentProperty={addNewComment} />
+        </div>
+        <div className="border-box-2">
+          <DisplayComments parentComments={comments} />
+        </div>
       </div>
     </div>
   );
