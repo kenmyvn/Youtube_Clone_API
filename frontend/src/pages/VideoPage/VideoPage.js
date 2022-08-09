@@ -18,7 +18,7 @@ const VideoPage = () => {
       let response = await axios.get(
         `https://www.googleapis.com/youtube/v3/search?type=video&relatedToVideoId=vaKVbKPQOqY&key=${KEY}&part=snippet&type=video&maxResults=5`
       );
-      setVideos(response.data);
+      setVideos(response.data.items);
     } catch (error) {
       console.log(error.message);
     }

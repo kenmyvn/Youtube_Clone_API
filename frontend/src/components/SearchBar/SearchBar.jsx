@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
-import { Link, renderMatches } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SearchResultsPage from "../../pages/SearchResultsPage/SearchResultsPage";
 
 const SearchBar = (props) => {
   const [search, updateSearch] = useState();
 
+  const navigate = useNavigate();
+
   function handleSubmit(event) {
     event.preventDefault();
+    const encoded = encodeURIComponent(search);
+    navigate(`/search/${search}`);
   }
 
   return (
@@ -21,11 +25,7 @@ const SearchBar = (props) => {
         value={search}
         onChange={(event) => updateSearch(event.target.value)}
       />
-      <Link to="/search/:search">
-        <button type="button" className="btn btn-outline-primary">
-          Search
-        </button>
-      </Link>
+      <button className="btn btn-outline-primary">Search</button>
     </form>
   );
 };

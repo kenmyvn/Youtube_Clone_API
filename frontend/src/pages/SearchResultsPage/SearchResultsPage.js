@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { KEY } from "../../localKey";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./SearchResultsPage.css";
+import { res } from "./test";
 
 const SearchResultsPage = () => {
   const [videos, setVideos] = useState();
+  const { search } = useParams();
 
   useEffect(() => {
-    // fetchVideos();
+    fetchVideos();
   }, []);
 
   const fetchVideos = async () => {
     try {
       let response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/search?type=video&relatedToVideoId=vaKVbKPQOqY&key=${KEY}&part=snippet&type=video&maxResults=5`
+        `https://www.googleapis.com/youtube/v3/search?q=${search}&key=${KEY}&part=snippet&type=video&maxResults=5`
       );
-      setVideos(response.data);
+      console.log(response);
+      setVideos(response.data.items);
     } catch (error) {
       console.log(error.message);
     }
