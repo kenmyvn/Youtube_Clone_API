@@ -28,7 +28,6 @@ function App() {
           element={
             <PrivateRoute>
               <SearchBar />
-              {/* <VideoPage /> */}
               <HomePage />
             </PrivateRoute>
           }
