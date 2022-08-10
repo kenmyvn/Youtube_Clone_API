@@ -21,6 +21,7 @@ const VideoPage = () => {
 
   useEffect(() => {
     // fetchVideos();
+    fetchComments();
   }, []);
 
   const fetchVideos = async () => {
@@ -29,6 +30,18 @@ const VideoPage = () => {
         `https://www.googleapis.com/youtube/v3/search?type=video&relatedToVideoId=vaKVbKPQOqY&key=${KEY}&part=snippet&type=video&maxResults=5`
       );
       setVideos(response.data.items);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const fetchComments = async () => {
+    try {
+      let response = await axios.get(
+        `http://127.0.0.1:8000/api/comments/${id}`
+      );
+      console.log(response);
+      setComments(response.data);
     } catch (error) {
       console.log(error.message);
     }
