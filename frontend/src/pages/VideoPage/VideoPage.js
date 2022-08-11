@@ -10,7 +10,7 @@ import AuthContext from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const VideoPage = () => {
-  const [videos, setVideos] = useState();
+  const [videos, setVideos] = useState("");
   const { id } = useParams();
   const auth = useContext(AuthContext);
 
@@ -24,7 +24,7 @@ const VideoPage = () => {
   const fetchRelatedVideos = async () => {
     try {
       let response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/search?type=video&relatedToVideoId=${id}&key=${KEY}&part=snippet&type=video&maxResults=2`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&relatedToVideoId=${id}&key=${KEY}&type=video&maxResults=4`
       );
       setVideos(response.data.items);
     } catch (error) {
@@ -33,7 +33,6 @@ const VideoPage = () => {
   };
 
   const fetchComments = async () => {
-    console.log(auth);
     try {
       let response = await axios.get(
         `http://127.0.0.1:8000/api/comments/${id}/`
@@ -77,12 +76,14 @@ const VideoPage = () => {
       <div className="relatedvideos">
         {videos &&
           videos.map((video) => {
-            return (
-              <div className="vid" key={video.snippet.title}>
-                <p>{video.snippet.title}</p>
-                <img src={video.snippet.thumbnails.medium.url} />
-              </div>
-            );
+            if (video.hasOwnProperty("snippet")) {
+              return (
+                <div className="vid" key={video.id.videoId}>
+                  <p>{video.snippet.title}</p>
+                  <img src={video.snippet.thumbnails.medium.url} />
+                </div>
+              );
+            }
           })}
       </div>
       <div className="background-color">
