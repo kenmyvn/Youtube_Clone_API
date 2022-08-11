@@ -13,7 +13,6 @@ const VideoPage = () => {
   const [videos, setVideos] = useState();
   const { id } = useParams();
   const auth = useContext(AuthContext);
-  console.log(auth.token);
 
   const [comments, setComments] = useState([]);
 
